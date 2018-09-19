@@ -1,7 +1,7 @@
 ---
 title: <center> Getting Started with R Markdown </center>
 author: <center> Aakash Prabhu </center>
-date: <center> September 2018 </center>
+date: <center> Fall 2018 </center>
 output: 
   html_document:
     toc: true
@@ -124,7 +124,7 @@ yields the following:
 
 Let $P$ be the probability that I milk a cow. Then $Q = 1 - P$ is the probability that I don't milk a cow.
 
-## Writing multiple line equations using `LaTeX`
+## Writing Multiple Line Equations Using `LaTeX`
 
 If you want to write mathematical equations that span more than just a single line, you can do so like this:
 
@@ -190,13 +190,22 @@ n <- rnorm(10)
 
 **Note**: Refer to `Homework_Template.Rmd` located in `Canvas` for a better understanding.
 
+# Submitting Homework
+
+Homework will be turned in on `Canvas`. Please make sure you turn in **BOTH**, the `.Rmd` file and the `PDF` file it yields.
+
+Please make sure you keep the header `# Classmate Collaborators` at the end of of your `.Rmd` file. Indicate the name and the email of the student(s) you
+collaborated with. You are encouraged to collaborate with your peers but everyone's work must be individual.
+
+Turning in identical `PDF` files is considered plagiarism and will result in a violation in academic conduct. 
+
 # Final Words
 
 Hopefully this simple tutorial should have gotten you started with getting your homework template `.Rmd` file to knit to a PDF. If you did, congrats! You can start working on the homework now :)
 
 If you have any questions, please post your questions to our [Piazza forum](https://piazza.com/class/jm72jdwi1e95zy). 
 
-# References
+# References and Resources
 
 1. [Our Coding Club's Tutorial](https://ourcodingclub.github.io/2016/11/24/rmarkdown-1.html)
 

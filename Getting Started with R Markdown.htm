@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)file:///Users/aakashprabhu/Desktop/RMD-Tutorial/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta name="generator" content="pandoc">
+
+
+
+
+<title>Getting Started with R Markdown</title>
+
+<script src="./Getting Started with R Markdown_files/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./Getting Started with R Markdown_files/cerulean.min.css" rel="stylesheet">
+<script src="./Getting Started with R Markdown_files/bootstrap.min.js"></script>
+<script src="./Getting Started with R Markdown_files/html5shiv.min.js"></script>
+<script src="./Getting Started with R Markdown_files/respond.min.js"></script>
+<script src="./Getting Started with R Markdown_files/jquery-ui.min.js"></script>
+<link href="./Getting Started with R Markdown_files/jquery.tocify.css" rel="stylesheet">
+<script src="./Getting Started with R Markdown_files/jquery.tocify.js"></script>
+<script src="./Getting Started with R Markdown_files/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+<script type="text/javascript" src="./Getting Started with R Markdown_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+<ul id="tocify-header1" class="tocify-header list-group"><li class="tocify-item list-group-item active" data-unique="1_purpose_and_goals">1 Purpose and Goals</li></ul><ul id="tocify-header2" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="2_what_is_r_markdown">2 What is R Markdown?</li></ul><ul id="tocify-header3" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="3_downloading_r-studio_and_r_markdown">3 Downloading R-Studio and R Markdown</li><ul class="tocify-subheader list-group" data-tag="2"><li class="tocify-item list-group-item" data-unique="31_tex_engines">3.1 TeX Engines</li></ul></ul><ul id="tocify-header4" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="4_creating_your_first_r_markdown_(rmd)_file">4 Creating your first R Markdown (.Rmd) File</li><ul class="tocify-subheader list-group" data-tag="2"><li class="tocify-item list-group-item" data-unique="41_the_yaml_header">4.1 The YAML Header</li><li class="tocify-item list-group-item" data-unique="42_rmd_file_for_homework">4.2 .Rmd File for Homework</li></ul></ul><ul id="tocify-header5" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="5_typsetting_mathematical_equations_using_latex">5 Typsetting Mathematical Equations using LaTeX</li><ul class="tocify-subheader list-group" data-tag="2"><li class="tocify-item list-group-item" data-unique="51_writing_multiple_line_equations_using_latex">5.1 Writing multiple line equations using LaTeX</li></ul></ul><ul id="tocify-header6" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="6_using_and_embedding_r_code_chunks">6 Using and Embedding R Code Chunks</li></ul><ul id="tocify-header7" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="7_final_words">7 Final Words</li></ul><ul id="tocify-header8" class="tocify-header list-group"><li class="tocify-item list-group-item" data-unique="8_references">8 References</li></ul></div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header active">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="file:///Users/aakashprabhu/Desktop/RMD-Tutorial/index.html">Getting Started With R Markdown</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+  <a href="file:///Users/aakashprabhu/Desktop/RMD-Tutorial/index.html">Getting Started</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore"><center>
+Getting Started with R Markdown
+</center></h1>
+<h4 class="author"><em><center>
+Aakash Prabhu
+</center></em></h4>
+<h4 class="date"><em><center>
+September 2018
+</center></em></h4>
+
+</div>
+
+
+<center>
+<img src="./Getting Started with R Markdown_files/rmd-logo.jpeg">
+</center>
+<div id="purpose-and-goals" class="section level1">
+<div name="1_purpose_and_goals" data-unique="1_purpose_and_goals"></div><h1><span class="header-section-number">1</span> Purpose and Goals</h1>
+<p>This tutorial is intended for students in <code>ECS 132: Probability and Statistical Modeling for CS</code>, offered by the department of <a href="http://www.cs.ucdavis.edu/">Computer Science at UC Davis</a>. After this tutorial, you will learn:</p>
+<ol style="list-style-type: decimal">
+<li>What <code>RMarkdown</code> is and why do we care?</li>
+<li>Learn how to write your homework in <code>RMarkdown</code></li>
+<li>Learn to Embed <code>LaTeX</code> code within your <code>R Markdown</code> file</li>
+<li>How to submit your homework assignments</li>
+</ol>
+</div>
+<div id="what-is-r-markdown" class="section level1">
+<div name="2_what_is_r_markdown" data-unique="2_what_is_r_markdown"></div><h1><span class="header-section-number">2</span> What is R Markdown?</h1>
+<p>Simply put, <code>R Markdown</code> is a file format to help you create dynamic documents, but with R. It uses simple <code>Markdown</code> and embeddable code chunks written in R. It also allows you to use <code>LaTeX</code> to typeset mathematical equations. Overall, <code>R Markdown</code> produces beautiful documents and academic reports.</p>
+<p>We will be using <code>R Markdown</code> to write up homework solutions. Since <code>R Markdown</code> requires some prior knowledge or familiarity with <code>Markdown</code> and <code>LaTeX</code>, please make sure you check out how to write in <code>Markdown</code> <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">syntax</a>, and basic typesetting using <code>LaTeX</code> <a href="https://www.sharelatex.com/learn/latex/Mathematical_expressions">syntax</a>.</p>
+</div>
+<div id="downloading-r-studio-and-r-markdown" class="section level1">
+<div name="3_downloading_r-studio_and_r_markdown" data-unique="3_downloading_r-studio_and_r_markdown"></div><h1><span class="header-section-number">3</span> Downloading <code>R-Studio</code> and <code>R Markdown</code></h1>
+<ol style="list-style-type: decimal">
+<li><p><code>R Markdown</code> is an <code>R Studio</code> plugin/extension. Be sure to download <code>R Studio</code> <a href="https://www.rstudio.com/products/rstudio/download/">here</a></p></li>
+<li><p>Follow steps to finish setting up your <code>R Studio</code> IDE.</p></li>
+<li><p>Once you have set up the IDE, type the following on your <code>R Studio</code> console that you should see on your screen (or on the bottom of your IDE if you have a file open).</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"rmarkdown"</span>)</a></code></pre></div>
+<div class="figure">
+<img src="./Getting Started with R Markdown_files/console.png" alt="Console in R Studio">
+<p class="caption">Console in R Studio</p>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li>Congratulations! You have successfully installed <code>R Markdown</code>.</li>
+</ol>
+<div id="tex-engines" class="section level2">
+<div name="31_tex_engines" data-unique="31_tex_engines"></div><h2><span class="header-section-number">3.1</span> <code>TeX</code> Engines</h2>
+<p>Since students are expected to submit <code>PDF</code> files, <code>R Markdown</code> requires a <code>TeX</code> engine installed. If you are using Windows, please make sure you have <code>MiKTeX</code> installed. Alternatively, if you are using a Mac, make sure to install <code>MacTeX</code>.</p>
+</div>
+</div>
+<div id="creating-your-first-r-markdown-.rmd-file" class="section level1">
+<div name="4_creating_your_first_r_markdown_(rmd)_file" data-unique="4_creating_your_first_r_markdown_(rmd)_file"></div><h1><span class="header-section-number">4</span> Creating your first <code>R Markdown</code> (<code>.Rmd</code>) File</h1>
+<ol style="list-style-type: decimal">
+<li><p>To create a new <code>.Rmd</code> file in <code>R Studio</code>, select <code>File &gt;&gt; New File &gt;&gt; R Markdown</code>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Fill in the Title and Author for your <code>.Rmd</code> file.</p></li>
+<li><p>Select the file type. Since you’re using <code>R Markdown</code> to submit homework, select <code>PDF</code></p></li>
+</ol></li>
+<li><p>By doing this, a minimal <code>R Markdown</code> file will be created for you. Here is how it should look.</p></li>
+</ol>
+<div class="figure">
+<img src="./Getting Started with R Markdown_files/sample-rmd.png" alt="Default RMD File Generated by R Studio">
+<p class="caption">Default RMD File Generated by R Studio</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><p>If you want to see the PDF the document yields, click on the <code>Knit</code> button.</p></li>
+<li><p>Congratulations! You’ve knitted your first <code>.Rmd</code> file to create a minimal <code>PDF</code> file.</p></li>
+</ol>
+<div id="the-yaml-header" class="section level2">
+<div name="41_the_yaml_header" data-unique="41_the_yaml_header"></div><h2><span class="header-section-number">4.1</span> The <code>YAML</code> Header</h2>
+<p>The first few lines in your <code>.Rmd</code> file that you see encapsulated within the <code>---</code> lines, is known as the <code>YAML</code> Header. This defines the required headers for your <code>.Rmd</code> file. For our homework assignments, shall use the following header:</p>
+<p>Replace the default <code>YAML</code> header with the following:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">---</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">title<span class="op">:</span><span class="st"> "ECS {Course} - Homework 0"</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">author<span class="op">:</span><span class="st">  </span>John Doe,  \<span class="cf">break</span> \{jdoe\} [at] ucdavis [dot] edu <span class="co"># Name and Email</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">date<span class="op">:</span><span class="st"> "`r Sys.Date()`"</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">output<span class="op">:</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span>pdf_document<span class="op">:</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">    </span>toc<span class="op">:</span><span class="st"> </span>yes</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    toc_depth<span class="op">:</span><span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="op">---</span></a></code></pre></div>
+<p>This should be self explanatory. We just define a title for our homework, the author, the date (whenever you knit), and define a default Table of Contents. There might be some pieces inside the <em>author</em> section that look strange to you. This is because, we can only define new lines and paranthesis using <code>LaTeX</code> syntax.</p>
+</div>
+<div id="rmd-file-for-homework" class="section level2">
+<div name="42_rmd_file_for_homework" data-unique="42_rmd_file_for_homework"></div><h2><span class="header-section-number">4.2</span> <code>.Rmd</code> File for Homework</h2>
+<ol style="list-style-type: decimal">
+<li><p>To make things easier, we have provided you with a template for writing homework. Please follow the template to write your homework. You can find the file in <code>Canvas</code> or <a href="https://raw.githubusercontent.com/UC-Davis-CS-Tutoring/Academic-Templates/master/R-Markdown/HomeworkTemplate.Rmd">here</a>.</p></li>
+<li><p>Simply replace the existing contents with the above mentioned <code>.Rmd</code> contents from the template file.</p></li>
+<li><p><code>Knit</code> the file to a <code>PDF</code> and confirm that everything is fine. You should now have a template homework PDF.</p></li>
+</ol>
+<p>You should see something like this:</p>
+<p><img src="./Getting Started with R Markdown_files/template-page1.png"> <img src="./Getting Started with R Markdown_files/template-page2.png"></p>
+</div>
+</div>
+<div id="typsetting-mathematical-equations-using-latex" class="section level1">
+<div name="5_typsetting_mathematical_equations_using_latex" data-unique="5_typsetting_mathematical_equations_using_latex"></div><h1><span class="header-section-number">5</span> Typsetting Mathematical Equations using <code>LaTeX</code></h1>
+<p>Often times you want to write out mathematical equations or proofs. If you want to add typset mathematical equations inline do so by typing <code>LaTeX</code> code in between two <code>$</code> symbols</p>
+<pre><code>$ &lt;Latex code&gt; $</code></pre>
+<p><strong>For example:</strong> The following <code>LaTeX</code> code</p>
+<pre><code>Let $P$ be the probability that I milk a cow. Then $Q = 1 - P$ is the probability that I don't milk a cow.</code></pre>
+<p>yields the following:</p>
+<p>Let <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 0.717em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.598em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.729em, 1000.6em, 2.741em, -999.997em); top: -2.557em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: STIXGeneral-Italic;">P</span></span><span style="display: inline-block; width: 0px; height: 2.562em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 0.932em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">P</script></span> be the probability that I milk a cow. Then <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;Q&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4" style="width: 5.182em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.289em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.729em, 1004.29em, 2.92em, -999.997em); top: -2.557em; left: 0em;"><span class="mrow" id="MathJax-Span-5"><span class="mi" id="MathJax-Span-6" style="font-family: STIXGeneral-Italic;">Q</span><span class="mo" id="MathJax-Span-7" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">=</span><span class="mn" id="MathJax-Span-8" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">1</span><span class="mo" id="MathJax-Span-9" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">−</span><span class="mi" id="MathJax-Span-10" style="font-family: STIXGeneral-Italic; padding-left: 0.241em;">P</span></span><span style="display: inline-block; width: 0px; height: 2.562em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left: 0px solid; width: 0px; height: 1.146em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Q</mi><mo>=</mo><mn>1</mn><mo>−</mo><mi>P</mi></math></span></span><script type="math/tex" id="MathJax-Element-2">Q = 1 - P</script></span> is the probability that I don’t milk a cow.</p>
+<div id="writing-multiple-line-equations-using-latex" class="section level2">
+<div name="51_writing_multiple_line_equations_using_latex" data-unique="51_writing_multiple_line_equations_using_latex"></div><h2><span class="header-section-number">5.1</span> Writing multiple line equations using <code>LaTeX</code></h2>
+<p>If you want to write mathematical equations that span more than just a single line, you can do so like this:</p>
+<pre><code>$$
+&lt;Multi Line Latex Code Here&gt;
+$$</code></pre>
+<p><strong>For Example:</strong> The following <code>LaTeX</code> code</p>
+<pre><code>Let $P(A) = 0.5$, $P(B) = 0.2$, $P(A \cap B) = 0.3$.
+
+Then
+$$
+\begin{split}
+P(A \cup B) &amp;= P(A) + P(B) - P(A \cap B) \\
+&amp;= 0.5 + 0.2 - 0.3 \\
+&amp;= 0.4
+\end{split}
+]
+$$</code></pre>
+<p>yields the following:</p>
+<p>Let <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0.5&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-11" style="width: 5.301em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.408em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.67em, 1004.35em, 2.92em, -999.997em); top: -2.557em; left: 0em;"><span class="mrow" id="MathJax-Span-12"><span class="mi" id="MathJax-Span-13" style="font-family: STIXGeneral-Italic;">P</span><span class="mo" id="MathJax-Span-14" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-15" style="font-family: STIXGeneral-Italic;">A</span><span class="mo" id="MathJax-Span-16" style="font-family: STIXGeneral-Regular;">)</span><span class="mo" id="MathJax-Span-17" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">=</span><span class="mn" id="MathJax-Span-18" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">0.5</span></span><span style="display: inline-block; width: 0px; height: 2.562em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left: 0px solid; width: 0px; height: 1.218em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.5</mn></math></span></span><script type="math/tex" id="MathJax-Element-3">P(A) = 0.5</script></span>, <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0.2&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-19" style="width: 5.301em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.408em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.729em, 1004.41em, 2.92em, -999.997em); top: -2.557em; left: 0em;"><span class="mrow" id="MathJax-Span-20"><span class="mi" id="MathJax-Span-21" style="font-family: STIXGeneral-Italic;">P</span><span class="mo" id="MathJax-Span-22" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-23" style="font-family: STIXGeneral-Italic;">B</span><span class="mo" id="MathJax-Span-24" style="font-family: STIXGeneral-Regular;">)</span><span class="mo" id="MathJax-Span-25" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">=</span><span class="mn" id="MathJax-Span-26" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">0.2</span></span><span style="display: inline-block; width: 0px; height: 2.562em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left: 0px solid; width: 0px; height: 1.146em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.2</mn></math></span></span><script type="math/tex" id="MathJax-Element-4">P(B) = 0.2</script></span>, <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mo&gt;&amp;#x2229;&lt;/mo&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0.3&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-27" style="width: 7.384em; display: inline-block;"><span style="display: inline-block; position: relative; width: 6.134em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.729em, 1006.07em, 2.92em, -999.997em); top: -2.557em; left: 0em;"><span class="mrow" id="MathJax-Span-28"><span class="mi" id="MathJax-Span-29" style="font-family: STIXGeneral-Italic;">P</span><span class="mo" id="MathJax-Span-30" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-31" style="font-family: STIXGeneral-Italic;">A</span><span class="mo" id="MathJax-Span-32" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">∩</span><span class="mi" id="MathJax-Span-33" style="font-family: STIXGeneral-Italic; padding-left: 0.241em;">B</span><span class="mo" id="MathJax-Span-34" style="font-family: STIXGeneral-Regular;">)</span><span class="mo" id="MathJax-Span-35" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">=</span><span class="mn" id="MathJax-Span-36" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">0.3</span></span><span style="display: inline-block; width: 0px; height: 2.562em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left: 0px solid; width: 0px; height: 1.146em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.3</mn></math></span></span><script type="math/tex" id="MathJax-Element-5">P(A \cap B) = 0.3</script></span>.</p>
+<p>Then <span class="math display"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;mtable columnalign=&quot;right left&quot; rowspacing=&quot;3pt&quot; columnspacing=&quot;0em&quot; displaystyle=&quot;true&quot;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mo&gt;&amp;#x222A;&lt;/mo&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mi&gt;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;P&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;mo&gt;&amp;#x2229;&lt;/mo&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd /&gt;&lt;mtd&gt;&lt;mi&gt;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0.5&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;0.2&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;0.3&lt;/mn&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd /&gt;&lt;mtd&gt;&lt;mi&gt;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;0.4&lt;/mn&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;/math&gt;" role="presentation" style="text-align: center; position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-37" style="width: 17.979em; display: inline-block;"><span style="display: inline-block; position: relative; width: 14.943em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(-0.057em, 1014.71em, 3.991em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-38"><span class="mtable" id="MathJax-Span-39" style="padding-right: 0.182em; padding-left: 0.182em;"><span style="display: inline-block; position: relative; width: 14.586em; height: 0px;"><span style="position: absolute; clip: rect(2.205em, 1003.57em, 5.896em, -999.997em); top: -4.342em; left: 0em;"><span style="display: inline-block; position: relative; width: 3.574em; height: 0px;"><span style="position: absolute; clip: rect(3.158em, 1003.57em, 4.348em, -999.997em); top: -5.295em; right: 0em;"><span class="mtd" id="MathJax-Span-40"><span class="mrow" id="MathJax-Span-41"><span class="mi" id="MathJax-Span-42" style="font-family: STIXGeneral-Italic;">P</span><span class="mo" id="MathJax-Span-43" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-44" style="font-family: STIXGeneral-Italic;">A</span><span class="mo" id="MathJax-Span-45" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">∪</span><span class="mi" id="MathJax-Span-46" style="font-family: STIXGeneral-Italic; padding-left: 0.241em;">B</span><span class="mo" id="MathJax-Span-47" style="font-family: STIXGeneral-Regular;">)</span></span></span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; clip: rect(3.812em, 1000em, 4.17em, -999.997em); top: -3.926em; right: 0em;"><span class="mtd" id="MathJax-Span-68"><span class="mrow" id="MathJax-Span-69"></span></span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; clip: rect(3.812em, 1000em, 4.17em, -999.997em); top: -2.616em; right: 0em;"><span class="mtd" id="MathJax-Span-79"><span class="mrow" id="MathJax-Span-80"></span></span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span></span><span style="display: inline-block; width: 0px; height: 4.348em;"></span></span><span style="position: absolute; clip: rect(2.205em, 1010.96em, 5.955em, -999.997em); top: -4.342em; left: 3.574em;"><span style="display: inline-block; position: relative; width: 11.015em; height: 0px;"><span style="position: absolute; clip: rect(3.158em, 1010.96em, 4.348em, -999.997em); top: -5.295em; left: 0em;"><span class="mtd" id="MathJax-Span-48"><span class="mrow" id="MathJax-Span-49"><span class="mi" id="MathJax-Span-50"></span><span class="mo" id="MathJax-Span-51" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">=</span><span class="mi" id="MathJax-Span-52" style="font-family: STIXGeneral-Italic; padding-left: 0.301em;">P</span><span class="mo" id="MathJax-Span-53" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-54" style="font-family: STIXGeneral-Italic;">A</span><span class="mo" id="MathJax-Span-55" style="font-family: STIXGeneral-Regular;">)</span><span class="mo" id="MathJax-Span-56" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">+</span><span class="mi" id="MathJax-Span-57" style="font-family: STIXGeneral-Italic; padding-left: 0.241em;">P</span><span class="mo" id="MathJax-Span-58" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-59" style="font-family: STIXGeneral-Italic;">B</span><span class="mo" id="MathJax-Span-60" style="font-family: STIXGeneral-Regular;">)</span><span class="mo" id="MathJax-Span-61" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">−</span><span class="mi" id="MathJax-Span-62" style="font-family: STIXGeneral-Italic; padding-left: 0.241em;">P</span><span class="mo" id="MathJax-Span-63" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-64" style="font-family: STIXGeneral-Italic;">A</span><span class="mo" id="MathJax-Span-65" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">∩</span><span class="mi" id="MathJax-Span-66" style="font-family: STIXGeneral-Italic; padding-left: 0.241em;">B</span><span class="mo" id="MathJax-Span-67" style="font-family: STIXGeneral-Regular;">)</span></span></span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; clip: rect(3.098em, 1007.32em, 4.289em, -999.997em); top: -3.926em; left: 0em;"><span class="mtd" id="MathJax-Span-70"><span class="mrow" id="MathJax-Span-71"><span class="mi" id="MathJax-Span-72"></span><span class="mo" id="MathJax-Span-73" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">=</span><span class="mn" id="MathJax-Span-74" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">0.5</span><span class="mo" id="MathJax-Span-75" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">+</span><span class="mn" id="MathJax-Span-76" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">0.2</span><span class="mo" id="MathJax-Span-77" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">−</span><span class="mn" id="MathJax-Span-78" style="font-family: STIXGeneral-Regular; padding-left: 0.241em;">0.3</span></span></span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; clip: rect(3.158em, 1002.5em, 4.17em, -999.997em); top: -2.616em; left: 0em;"><span class="mtd" id="MathJax-Span-81"><span class="mrow" id="MathJax-Span-82"><span class="mi" id="MathJax-Span-83"></span><span class="mo" id="MathJax-Span-84" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">=</span><span class="mn" id="MathJax-Span-85" style="font-family: STIXGeneral-Regular; padding-left: 0.301em;">0.4</span></span></span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span></span><span style="display: inline-block; width: 0px; height: 4.348em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -1.996em; border-left: 0px solid; width: 0px; height: 4.575em;"></span></span></nobr><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable columnalign="right left" rowspacing="3pt" columnspacing="0em" displaystyle="true"><mtr><mtd><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo>∪</mo><mi>B</mi><mo stretchy="false">)</mo></mtd><mtd><mi></mi><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>+</mo><mi>P</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo><mo>−</mo><mi>P</mi><mo stretchy="false">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd></mtd><mtd><mi></mi><mo>=</mo><mn>0.5</mn><mo>+</mo><mn>0.2</mn><mo>−</mo><mn>0.3</mn></mtd></mtr><mtr><mtd></mtd><mtd><mi></mi><mo>=</mo><mn>0.4</mn></mtd></mtr></mtable></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-6">
+\begin{split}
+P(A \cup B) &= P(A) + P(B) - P(A \cap B) \\
+&= 0.5 + 0.2 - 0.3 \\
+&= 0.4
+\end{split}
+</script></span></p>
+<p>Now, try to create your own multi-line <code>LaTeX</code> equation and embed it in your <code>.Rmd</code> file.</p>
+</div>
+</div>
+<div id="using-and-embedding-r-code-chunks" class="section level1">
+<div name="6_using_and_embedding_r_code_chunks" data-unique="6_using_and_embedding_r_code_chunks"></div><h1><span class="header-section-number">6</span> Using and Embedding R Code Chunks</h1>
+<p>Often times, you will be asked to write some sort of R code in your homework. You want to embed your R code in your <code>.Rmd</code> file. Any R code that is to be writted and embedded in your <code>.Rmd</code> file, should be enclosed within three grave accents that look like this: ` ` `</p>
+<p>Here is an example of a code chunk:</p>
+<p><code>{r someOptionalChunkName, eval=TRUE} n &lt;- rnorm(10)</code></p>
+<p>When you write a code chunk like this, <code>R Markdown</code>, by default, compiles the code, executes it, and writes the output to the file. If you want to suppress the output, then you can write a code chunk like this:</p>
+<p><code>{r someOtherChunkName, resuls='hide'} n &lt;- rnorm(10)</code></p>
+<p>If you do not wish to execute the code and just print out the code chunk, then you can write a code chunk like this:</p>
+<p><code>{r iCantThinkAnymore, eval=FALSE} n &lt;- rnorm(10)</code></p>
+<p><strong>Note</strong>: Refer to <code>Homework_Template.Rmd</code> located in <code>Canvas</code> for a better understanding.</p>
+</div>
+<div id="final-words" class="section level1">
+<div name="7_final_words" data-unique="7_final_words"></div><h1><span class="header-section-number">7</span> Final Words</h1>
+<p>Hopefully this simple tutorial should have gotten you started with getting your homework template <code>.Rmd</code> file to knit to a PDF. If you did, congrats! You can start working on the homework now :)</p>
+<p>If you have any questions, please post your questions to our <a href="https://piazza.com/class/jm72jdwi1e95zy">Piazza forum</a>.</p>
+</div>
+<div id="references" class="section level1">
+<div name="8_references" data-unique="8_references"></div><h1><span class="header-section-number">8</span> References</h1>
+<ol style="list-style-type: decimal">
+<li><p><a href="https://ourcodingclub.github.io/2016/11/24/rmarkdown-1.html">Our Coding Club’s Tutorial</a></p></li>
+<li><p><a href="https://rmarkdown.rstudio.com/articles_intro.html">R Mardown Official Intro</a></p></li>
+<li><p><a href="https://rmarkdown.rstudio.com/lesson-1.html">Documentation for R Markdown</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: STIXSizeOneSym, sans-serif;"></div></div></body></html>

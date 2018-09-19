@@ -1,8 +1,4 @@
 name: "r-markdown-tutorial"
 output_dir: "."
 navbar:
-    title: "Getting Started With R Markdown"
-    left:
-        - text: "Getting Started"
-          href: index.html
-    
+    title: "Getting Started With R Markdown"    
