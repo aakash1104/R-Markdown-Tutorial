@@ -5,3 +5,5 @@ navbar:
     left:
         - text: "Getting Started"
           href: index.html
+        - text: "Get Homework Template"
+          href: https://github.com/UC-Davis-CS-Tutoring/Academic-Templates/tree/master/R-Markdown
